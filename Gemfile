@@ -3,9 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
 
-# Use mysql as the database for Active Record
-gem 'mysql2'
-
 gem 'acts_as_list', '~> 0.4.0'
 
 # Use SCSS for stylesheets
@@ -45,3 +42,13 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :development do
+# Use mysql as the database for Active Record
+ gem 'mysql2' 
+end
+
+group :production do
+  gem 'pg'
+  #gem 'rails_12factor', '0.0.2'
+end

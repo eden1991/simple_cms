@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-	AdminUser.create(:first_name => 'Eden', :last_name => 'Halil', :email => 'eden@halil.com', :username => 'edenhalil', :password => '4324rtert')
+	AdminUser.create(:first_name => 'Eden', :last_name => 'Halil', :email => 'eden@halil.com', :username => 'edenhalil', :password => 'password1234', :password_confirmation => 'password1234')
 	puts "User inserted."
 
 

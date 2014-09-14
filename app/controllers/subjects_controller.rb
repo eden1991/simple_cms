@@ -38,7 +38,7 @@ class SubjectsController < ApplicationController
   end
 
   def update
-    # Fidn an existing object using form parameters
+    # Find an existing object using form parameters
     @subject = Subject.find(params[:id])
     # Update the object
     if @subject.update_attributes(subject_params)
@@ -50,7 +50,6 @@ class SubjectsController < ApplicationController
       @subject_count = Subject.count
       render('edit')
     end
-
   end
 
   def delete
@@ -58,17 +57,19 @@ class SubjectsController < ApplicationController
   end
 
   def destroy
-    @subject = Subject.find(params[:id]).destroy
-    flash[:notice] = "Subject '#{@subject.name}' destroyed successfully."
+    subject = Subject.find(params[:id]).destroy
+    flash[:notice] = "Subject '#{subject.name}' destroyed successfully."
     redirect_to(:action => 'index')
   end
 
+
   private
-  
+
     def subject_params
       # same as using "params[:subject]", except that it:
       # - raises an error if :subject is not present
-      # - allows listed attributes to be mass_assigned
+      # - allows listed attributes to be mass-assigned
       params.require(:subject).permit(:name, :position, :visible, :created_at)
     end
+
 end

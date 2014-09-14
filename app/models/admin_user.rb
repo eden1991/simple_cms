@@ -16,8 +16,8 @@ class AdminUser < ActiveRecord::Base
 #  validates_presence_of :last_name
 #  validates_length_of :last_name, :maximum => 50
 #  validates_presence_of :username
-# validates_length_of :username, :within => 8..25
-# validates_uniqueness_of :username
+#  validates_length_of :username, :within => 8..25
+#  validates_uniqueness_of :username
 #  validates_presence_of :email
 #  validates_length_of :email, :maximum => 100
 #  validates_format_of :email, :with => EMAIL_REGEX
@@ -37,6 +37,14 @@ class AdminUser < ActiveRecord::Base
 
   validate :username_is_allowed
 #  validate :no_new_users_on_saturday, :on => :create
+
+  scope :sorted, lambda {  order("last_name ASC, first_name ASC") } # Still need to add in sorting by first name
+
+  def name
+    "#{first_name} #{last_name}"
+    # Or: first_name + ' ' last_name
+    # Or: [first_name, last_name].join(' ')
+  end
 
   def username_is_allowed
     if FORBIDDEN_USERNAMES.include?(username)

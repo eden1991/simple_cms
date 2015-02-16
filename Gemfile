@@ -42,15 +42,15 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
+  gem 'poltergeist'
+  
 group :development do
 # Use mysql as the database for Active Record
  gem 'mysql2' 
+ gem 'phantomjs', :require => 'phantomjs/poltergeist'
 end
 
 group :production do
   gem 'pg'
   gem 'puma'
-  gem 'poltergeist'
-  gem 'phantomjs', :require => 'phantomjs/poltergeist'
 end
